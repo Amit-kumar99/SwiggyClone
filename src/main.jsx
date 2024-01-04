@@ -5,7 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home"
 import Cart from "./components/Cart"
-import Login from "./components/Login"
+import Signin from "./components/Signin"
 import Signup from "./components/Signup"
 
 const appRouter = createBrowserRouter([
@@ -19,7 +19,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/signin",
-        element: <Login/>
+        element: <Signin/>
       },
       {
         path: "/signup",
