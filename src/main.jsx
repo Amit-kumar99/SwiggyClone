@@ -7,6 +7,7 @@ import Home from "./components/Home"
 import Cart from "./components/Cart"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup"
+import MenuItems from './components/MenuItems.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart/>
+      },
+      {
+        path: "/menu",
+        element: <MenuItems/>
       },
     ]
   }

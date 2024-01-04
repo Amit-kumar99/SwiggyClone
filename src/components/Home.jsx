@@ -3,6 +3,7 @@ import { RESTAURANTS_API } from "../utils/constants";
 import Filters from "./Filters";
 import RestaurantCard from "./RestaurantCard";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -31,7 +32,9 @@ const Home = () => {
         </h1>
         <div className="flex flex-wrap">
           {filteredRestaurantsList.map((item) => (
-            <RestaurantCard key={item.info.id} restaurantData={item.info} />
+            <Link key={item.info.id} to="/menu">
+              <RestaurantCard restaurantData={item.info} />
+            </Link>
           ))}
         </div>
       </div>
