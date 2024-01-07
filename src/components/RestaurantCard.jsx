@@ -4,7 +4,7 @@ const RestaurantCard = ({restaurantData}) => {
   return (
     <div className="m-4 p-1 w-[220px] bg-gray-100 rounded-md hover:bg-gray-300">
       <img
-        className="rounded-md w-[210] h-[190]"
+        className="rounded-md w-[210px] h-[190px]"
         src={CDN_URL + restaurantData.cloudinaryImageId}
         alt="veg biryani"
       />

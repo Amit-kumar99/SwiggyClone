@@ -7,7 +7,7 @@ import Home from "./components/Home"
 import Cart from "./components/Cart"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup"
-import MenuItems from './components/MenuItems.jsx';
+import RestaurantMenu from './components/RestaurantMenu.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -31,10 +31,11 @@ const appRouter = createBrowserRouter([
         element: <Cart/>
       },
       {
-        path: "/menu",
-        element: <MenuItems/>
+        path: "/restaurants/:restaurantId",
+        element: <RestaurantMenu />,
       },
-    ]
+    ],
+    errorElement: <Error />
   }
 ])
 
