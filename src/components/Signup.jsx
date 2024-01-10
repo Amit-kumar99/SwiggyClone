@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  // use useRef instead
   //use firebase
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const mobileNumber = useRef(null);
+  console.log(mobileNumber);
+  const name = useRef(null);
+  const email = useRef(null);
+
+  console.log(ref);
   const [checked, setChecked] = useState(false);
 
   const navigate = useNavigate();
 
   function validateFormInputs() {
-    if (mobileNumber.length === 10 && name.trim() !== "" && email.includes('@') && checked) {
+    if (mobileNumber.current.value.length === 10 && name.current.value.trim() !== "" && email.current.value.includes('@') && checked) {
       return true;
     } 
     else {
@@ -20,8 +22,11 @@ const Signup = () => {
     }
   }
 
-  function handleSignup({mobileNumber, name, email}) {
-    navigate("/login");
+  // function handleSignup({mobileNumber, name, email}) {
+  //   navigate("/signin");
+  // }
+  function handleSignup() {
+    navigate("/signin");
   }
 
   return (
@@ -30,20 +35,20 @@ const Signup = () => {
       <form className="m-4" onSubmit={(e) => e.preventDefault()}>
         <div>
           <input
-            onChange={(e) => setMobileNumber(e.target.value)}
+            ref={mobileNumber}
             className="border border-gray-400 p-3 rounded-sm w-full"
             type="text"
             placeholder="Mobile Number"
           />
           <div className="mb-2">
             <label>
-              {mobileNumber.length !== 10 && <small className="text-red-500">Mobile number must be 10 digits</small>}
+              {mobileNumber.current.value.length !== 10 && <small className="text-red-500">Mobile number must be 10 digits</small>}
             </label>
           </div>
         </div>
         <div>
           <input
-            onChange={(e) => setName(e.target.value)}
+            ref={name}
             className="border border-gray-400 p-3 rounded-sm w-full"
             type="text"
             placeholder="Name"
@@ -51,20 +56,20 @@ const Signup = () => {
           />
           <div className="mb-2">
             <label className="text-danger">
-              {name.trim() === "" && <small className="text-red-500">Name must not be empty</small>}
+              {name.current.value.trim() === "" && <small className="text-red-500">Name must not be empty</small>}
             </label>
           </div>
         </div> 
         <div>
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            ref={email}
             className="border border-gray-400 p-3 rounded-sm w-full"
             type="email"
             placeholder="Email"
           />
           <div className="mb-2">
             <label className="text-danger">
-              {!email.includes("@") && <small className="text-red-500">Invalid email</small>}
+              {!email.current.value.includes("@") && <small className="text-red-500">Invalid email</small>}
             </label>
           </div>     
         </div>

@@ -17,8 +17,8 @@ const Home = () => {
     const data = await fetch(RESTAURANTS_API);
     const json = await data.json();
 
-    setRestaurantsList(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurantsList(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
   return (
