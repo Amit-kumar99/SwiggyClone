@@ -66,7 +66,6 @@ const Signup = () => {
         <button
           disabled={!validateFormInputs()}
           className="bg-green-500 p-3 my-2 rounded-md w-full text-white"
-          // onClick={() => handleSignup({mobileNumber, name, email})}
           onClick={handleSignup}
         >
           Create account
