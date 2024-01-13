@@ -4,10 +4,12 @@ import Filters from "./Filters";
 import RestaurantCard from "./RestaurantCard";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
+import SearchBar from "./SearchBar";
 
 const Home = () => {
-  const [restaurantsList, setRestaurantsList] = useState([]);
-  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
+  const [restaurantsList, setRestaurantsList] = useState(null);
+  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState(null);
 
   useEffect(() => {
     fetchRestaurants();
@@ -17,16 +19,15 @@ const Home = () => {
     const data = await fetch(RESTAURANTS_API);
     const json = await data.json();
 
-    setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setRestaurantsList(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurantsList(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
-  return (
+  return filteredRestaurantsList===null ? <Shimmer/> : (
     <div>
       <div className="body w-10/12 m-auto">
-        <div className="flex mb-4">        
-          <Filters restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
-        </div>  
+        <SearchBar/>
+        <Filters restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
         <h1 className="font-bold mx-4 text-3xl">
           Restaurants with online food delivery in Hyderabad
         </h1>

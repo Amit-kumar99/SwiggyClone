@@ -1,9 +1,11 @@
+import { useState } from "react";
 import MenuItemsList from "./MenuItemsList";
 
 const RestaurantMenuCategories=({data})=>{
+    const [showMenuItems, setShowMenuItems] = useState(false);
 
     const handleClick=()=>{
-        
+        setShowMenuItems(!showMenuItems);
     }
 
     return (
@@ -12,10 +14,10 @@ const RestaurantMenuCategories=({data})=>{
         <div className="flex cursor-pointer bg-gray-100 p-4 justify-between shadow-md" 
         onClick={handleClick}>
             <p className="font-bold">{data.title} ({data.itemCards.length})</p>
-            <p className="mr-5">↓</p>
+            <p><i className="fa-solid fa-angle-down"/></p>
         </div>
         {/* body */}
-        {<MenuItemsList menuItems={data.itemCards}/>}
+        {showMenuItems && <MenuItemsList menuItems={data.itemCards}/>}
     </div>
     )}
 

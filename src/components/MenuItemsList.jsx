@@ -1,6 +1,12 @@
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
 
 const MenuItemsList=({menuItems})=>{
+    const handleAddItems = () => {
+        //add to cart
+        //redux dispatch
+        //or maybe use context api
+    }
+
     return (
     <div>
         {menuItems.map((item)=>(
@@ -13,7 +19,7 @@ const MenuItemsList=({menuItems})=>{
                 <div>
                     <div className="border border-gray-400 absolute w-28 bg-white rounded-md shadow-lg mx-5 py-1">
                         <button className="text-xs pb-1 font-bold" 
-                            onClick={() => {}}>
+                            onClick={() => handleAddItems}>
                             ADD +
                         </button>
                     </div>
