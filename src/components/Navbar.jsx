@@ -15,7 +15,6 @@ const Navbar = () => {
             <div className='ml-16 mt-2'>
               <Link className='mx-5' to="/">Home</Link>
               <Link className='mx-5' to="/signin" onClick={handleBtnName}>{btnName}</Link>
-              {/* <Link className='mx-5' to="/signup">Sign Up</Link> */}
               <Link className='mx-5' to="/cart">Cart [0]</Link>
             </div>
           </div>
