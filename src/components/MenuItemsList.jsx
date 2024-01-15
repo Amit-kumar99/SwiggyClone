@@ -1,10 +1,12 @@
+import { useDispatch } from "react-redux";
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
+import { addItems } from "../utils/cartSlice";
 
 const MenuItemsList=({menuItems})=>{
-    const handleAddItems = () => {
-        //add to cart
-        //redux dispatch
-        //or maybe use context api
+    const dispatch = useDispatch();
+
+    const handleAddItems = ({item}) => {
+        dispatch(addItems(item));
     }
 
     return (
@@ -18,9 +20,9 @@ const MenuItemsList=({menuItems})=>{
                 </div>
                 <div>
                     <div className="border border-gray-400 absolute w-28 bg-white rounded-md shadow-lg mx-5 py-1">
-                        <button className="text-xs pb-1 font-bold" 
-                            onClick={() => handleAddItems}>
-                            ADD +
+                        <button className="text-xs pb-1 font-bold"
+                            onClick={() => handleAddItems(item)}>    
+                                ADD +
                         </button>
                     </div>
                     <img className="w-40 rounded-md"
