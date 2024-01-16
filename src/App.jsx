@@ -6,8 +6,10 @@ import store from './utils/store';
 function App() {
   return (
     <Provider store={store}>
-      <Navbar/>
-      <Outlet/>
+      <div>
+        <Navbar/>
+        <Outlet/>
+      </div>
     </Provider>
   )
 }

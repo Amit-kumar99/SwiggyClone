@@ -21,7 +21,7 @@ const MenuItemsList=({menuItems})=>{
                 <div>
                     <div className="border border-gray-400 absolute w-28 bg-white rounded-md shadow-lg mx-5 py-1">
                         <button className="text-xs pb-1 font-bold"
-                            onClick={() => handleAddItems(item)}>    
+                            onClick={() => handleAddItems({item})}>    
                                 ADD +
                         </button>
                     </div>

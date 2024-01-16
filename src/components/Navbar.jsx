@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom'
 import { LOGO_URL } from "../utils/constants";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const [btnName, setBtnName] = useState("Sign In");
   const handleBtnName = () => {
     btnName==="Sign In" ? setBtnName("Sign Out") : setBtnName("Sign In");
   }
+
+  const cartItems = useSelector((store) => store.cart.cartItems);
+  console.log(cartItems);
+
   return (
     <div className="border-b-2 shadow-md">
         <div className="w-9/12 flex justify-between mx-auto my-2">
@@ -15,7 +20,7 @@ const Navbar = () => {
             <div className='ml-16 mt-2'>
               <Link className='mx-5' to="/">Home</Link>
               <Link className='mx-5' to="/signin" onClick={handleBtnName}>{btnName}</Link>
-              <Link className='mx-5' to="/cart">Cart [0]</Link>
+              <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
             </div>
           </div>
         </div> 
