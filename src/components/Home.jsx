@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RESTAURANTS_API } from "../utils/constants";
 import Filters from "./Filters";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { ExclusiveRestaurantCard } from "./RestaurantCard";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -22,6 +22,7 @@ const Home = () => {
     setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     
+    console.log(filteredRestaurantsList[0].info.totalRatingsString);
     // console.log(json?.data?.cards);
   }
 
@@ -36,7 +37,9 @@ const Home = () => {
         <div className="flex flex-wrap">
           {filteredRestaurantsList.map((item) => (
             <Link key={item.info.id} to={"/restaurants/" + item.info.id}>
-              <RestaurantCard restaurantData={item.info} />
+              {item.info.totalRatingsString.includes("K+") && parseInt(item.info.totalRatingsString) >= 10 ?
+                <ExclusiveRestaurantCard restaurantData={item.info} /> :
+                <RestaurantCard restaurantData={item.info} />}
             </Link>
           ))}
         </div>
