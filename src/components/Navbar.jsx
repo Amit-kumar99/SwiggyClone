@@ -5,9 +5,6 @@ import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const [btnName, setBtnName] = useState("Sign In");
-  const handleBtnName = () => {
-    btnName==="Sign In" ? setBtnName("Sign Out") : setBtnName("Sign In");
-  }
 
   const cartItems = useSelector((store) => store.cart.cartItems);
   console.log(cartItems);
@@ -19,7 +16,7 @@ const Navbar = () => {
           <div className='my-auto font-semibold text-md text-gray-700 flex'>
             <div className='ml-16 mt-2'>
               <Link className='mx-5' to="/">Home</Link>
-              <Link className='mx-5' to="/signin" onClick={handleBtnName}>{btnName}</Link>
+              <Link className='mx-5' to="/signin">Sign In</Link>
               <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
             </div>
           </div>

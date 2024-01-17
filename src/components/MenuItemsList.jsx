@@ -19,8 +19,9 @@ const MenuItemsList=({menuItems})=>{
                   <p className="font-normal text-gray-500 text-xs">{item.card.info.description}</p>
                 </div>
                 <div>
-                    <div className="border border-gray-400 absolute w-28 bg-white rounded-md shadow-lg mx-5 py-1">
-                        <button className="text-xs pb-1 font-bold"
+                    <div className="border border-gray-400 absolute bg-white rounded-md shadow-lg py-1 px-2 text-lime-500">
+                        <button 
+                            className="pb-1 font-semibold"
                             onClick={() => handleAddItems({item})}>    
                                 ADD +
                         </button>
