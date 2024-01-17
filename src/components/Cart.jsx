@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import MenuItemsList from "./MenuItemsList";
-import { addItems, clearCart } from "../utils/cartSlice";
+import { addItems, removeItems, clearCart } from "../utils/cartSlice";
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItemsList = useSelector((store) => store.cart.cartItems);
+  const countOfAllCartItems = useSelector((store) => store.cart.countOfAllCartItems);
+  console.log(countOfAllCartItems);
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -24,7 +25,7 @@ const Cart = () => {
       :
         (cartItemsList.length === 0 && <h1>Your cart is empty. Add items to your cart.</h1>)
       }
-      {cartItemsList.map((item)=>(
+      {cartItemsList.map((item, index)=>(
             <div className="mt-8 flex border-b-2 p-4 border-gray-300 justify-between" key={item.card.info.id}>
                 <div className="p-2 w-9/12"> 
                   <p className="font-bold">{item.card.info.name}</p>
@@ -34,11 +35,9 @@ const Cart = () => {
                    <i 
                     className="fa-solid fa-minus pr-3 cursor-pointer" 
                     style ={{ color: "#bb0202"}}
-                    // doesn't work
-                    // onClick={() => {dispatch(removeItems())}}
+                    onClick={() => {dispatch(removeItems(item))}}
                     />  
-                      {/*  make this value dynamic  */}
-                      1   
+                      {countOfAllCartItems[index]}  
                   <i  
                     className="fa-solid fa-plus pl-3 cursor-pointer" 
                     style ={{ color: "#59b210"}}
