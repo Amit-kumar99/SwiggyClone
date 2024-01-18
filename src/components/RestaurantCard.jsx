@@ -30,7 +30,7 @@ export const ExclusiveRestaurantCard = ({restaurantData}) => {
   return (
     <div>
       <div className="absolute p-1 mt-1 ml-3 bg-black text-white">
-        10000+ Ratings
+        10K+ Ratings
       </div>
       <RestaurantCard restaurantData={restaurantData}/>
     </div>

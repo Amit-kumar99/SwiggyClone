@@ -21,13 +21,10 @@ const Home = () => {
 
     setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    
-    console.log(filteredRestaurantsList[0].info.totalRatingsString);
-    // console.log(json?.data?.cards);
   }
 
   return filteredRestaurantsList===null ? <Shimmer/> : (
-    <div>
+    <div onScroll={() => {handleScroll}}>
       <div className="body w-10/12 m-auto">
         <SearchBar restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
         <Filters restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
@@ -49,4 +46,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;

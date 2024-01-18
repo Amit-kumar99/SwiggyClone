@@ -1,16 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addItems, removeItems, clearCart } from "../utils/cartSlice";
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItemsList = useSelector((store) => store.cart.cartItems);
   const countOfAllCartItems = useSelector((store) => store.cart.countOfAllCartItems);
-  console.log(countOfAllCartItems);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleClearCart = () => {
     dispatch(clearCart());
   }
+
+  useEffect(()=>{
+    const arr = cartItemsList.map((x, index) => x.card.info.price / 100 * countOfAllCartItems[index]);
+    setTotalPrice(arr.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    }, 0));
+  },[cartItemsList, countOfAllCartItems]);
 
   return (
     <div className="w-10/12 mx-auto mt-5">
@@ -18,7 +26,6 @@ const Cart = () => {
       {cartItemsList.length!==0 ? (
         <button 
           className="bg-black text-white p-2 rounded-md mt-3"
-          //not working
           onClick={handleClearCart}
           >Clear Cart
         </button>)
@@ -29,7 +36,9 @@ const Cart = () => {
             <div className="mt-8 flex border-b-2 p-4 border-gray-300 justify-between" key={item.card.info.id}>
                 <div className="p-2 w-9/12"> 
                   <p className="font-bold">{item.card.info.name}</p>
-                  <p>₹{item.card.info.price / 100}</p>
+                  <p>
+                    ₹{item.card.info.price / 100} * {countOfAllCartItems[index]} = {item.card.info.price / 100 * countOfAllCartItems[index]}
+                  </p>
                   <p className="font-normal text-gray-500 text-xs">{item.card.info.description}</p>
                   <p className="border inline-block mt-2 py-1 px-2">
                    <i 
@@ -50,6 +59,11 @@ const Cart = () => {
                 </div>
             </div>
         ))}
+        {cartItemsList.length!==0 && (<div>
+          <h2 className="font-semibold text-2xl my-2">
+            TOTAL PRICE : {totalPrice}
+          </h2>
+        </div>)}
     </div>
   )
 }
