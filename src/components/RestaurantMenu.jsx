@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
     const [restaurantInfo, setRestaurantInfo] = useState(null);
     
     useEffect(() => {
-        fetchMenuItems();
+        fetchMenuItems().catch((err) => console.log(err));
     }, []);
     
     const fetchMenuItems = async () => {
@@ -27,7 +27,6 @@ const RestaurantMenu = () => {
     const restaurantAvgRating=restaurantInfo?.data?.cards[0]?.card?.card?.info?.avgRating;
     const restaurantMenu=restaurantInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
         (x)=>x?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    console.log(restaurantMenu);
 
     return restaurantInfo === null ? <Shimmer /> : (
         <div className="w-6/12 mx-auto">

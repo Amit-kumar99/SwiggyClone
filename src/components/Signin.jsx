@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 const Signin = () => {
 
     const mobileNumberRef = useRef(null);
-    console.log(mobileNumberRef);
     const navigate = useNavigate();
 
     const handleLogin = () => {

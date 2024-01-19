@@ -11,7 +11,6 @@ const Filters = ({restaurantsList, setFilteredRestaurantsList}) => {
             Fast Delivery
         </button>
       </div>
-
       <div className="m-1">
         <button
           className={"border border-gray-200 shadow-md px-2 py-2 rounded-full text-sm font-semibold bg-white-200"}
@@ -21,9 +20,8 @@ const Filters = ({restaurantsList, setFilteredRestaurantsList}) => {
             Ratings : 4+
         </button>
       </div>
-
     </div>
   )
 }
 
-export default Filters
+export default Filters;

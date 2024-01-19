@@ -12,7 +12,7 @@ const Home = () => {
   const [filteredRestaurantsList, setFilteredRestaurantsList] = useState(null);
 
   useEffect(() => {
-    fetchRestaurants();
+    fetchRestaurants().catch((err) => console.log(err));
   }, []);
 
   const fetchRestaurants = async () => {
@@ -24,7 +24,7 @@ const Home = () => {
   }
 
   return filteredRestaurantsList===null ? <Shimmer/> : (
-    <div onScroll={() => {handleScroll}}>
+    <div>
       <div className="body w-10/12 m-auto">
         <SearchBar restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
         <Filters restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>

@@ -7,7 +7,7 @@ const Signup = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
 
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
   const navigate = useNavigate();
 
@@ -61,7 +61,7 @@ const Signup = () => {
           type="checkbox"
         />
         <label className="form-check-label" >
-          I agree to Burgeria's Terms of Service and Privacy Policy.
+          I agree to Swiggy's Terms of Service and Privacy Policy.
         </label>
         <button
           disabled={!validateFormInputs()}

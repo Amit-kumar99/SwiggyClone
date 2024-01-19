@@ -1,13 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { LOGO_URL } from "../utils/constants";
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  const [btnName, setBtnName] = useState("Sign In");
-
   const cartItems = useSelector((store) => store.cart.cartItems);
-  console.log(cartItems);
 
   return (
     <div className="border-b-2 shadow-md">
@@ -21,9 +17,8 @@ const Navbar = () => {
             </div>
           </div>
         </div> 
-    </div>
-    
+    </div> 
   )
-}
+};
 
-export default Navbar
+export default Navbar;

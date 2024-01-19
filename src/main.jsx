@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home"
-import Cart from "./components/Cart"
-import Signin from "./components/Signin"
-import Signup from "./components/Signup"
+import Home from "./components/Home";
+import Cart from "./components/Cart";
+import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 import RestaurantMenu from './components/RestaurantMenu.jsx';
+import Error from "./components/Error";
 
 const appRouter = createBrowserRouter([
   {
@@ -41,8 +41,6 @@ const appRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={appRouter}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </RouterProvider>
 )
