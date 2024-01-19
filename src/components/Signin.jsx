@@ -40,7 +40,7 @@ const Signin = () => {
               className="bg-green-500 p-3 my-2 rounded-md w-full text-white"
               onClick={handleLogin}
             >
-              Login as User
+              Send OTP
             </button>
             <hr className="border border-black"/>
             <p className="mt-1">

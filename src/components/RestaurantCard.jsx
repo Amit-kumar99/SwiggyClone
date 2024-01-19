@@ -2,9 +2,9 @@ import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({restaurantData}) => {
   return (
-    <div className="m-4 w-[220px] bg-gray-100 rounded-md hover:bg-gray-300 text-gray-700">
+    <div className="m-4 w-[280px] bg-gray-100 rounded-md hover:bg-gray-300 text-gray-700">
       <img
-        className="rounded-md w-[220px] h-[140px]"
+        className="rounded-md w-[280px] h-[190px]"
         src={CDN_URL + restaurantData.cloudinaryImageId}
         alt="veg biryani"
       />

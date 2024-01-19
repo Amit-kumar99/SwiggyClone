@@ -4,16 +4,14 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import RestaurantMenuCategories from "./RestaurantMenuCategories";
 
-const MenuItems = () => {
+const RestaurantMenu = () => {
     const { restaurantId } = useParams();
-
     const [restaurantInfo, setRestaurantInfo] = useState(null);
-    // const [showIndex, setShowIndex] = useState(null);
     
     useEffect(() => {
         fetchMenuItems();
-    }, [])
-
+    }, []);
+    
     const fetchMenuItems = async () => {
         const data = await fetch(MENU_ITEMS_URL + restaurantId);
         const json = await data.json();
@@ -48,4 +46,4 @@ const MenuItems = () => {
     )
 }
 
-export default MenuItems;
+export default RestaurantMenu;
