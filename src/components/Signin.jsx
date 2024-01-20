@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { checkValidSigninData, checkValidSignupData } from "../utils/validations";
 
 const Signin = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -7,38 +8,25 @@ const Signin = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const [checked, setChecked] = useState(false);
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null);
+  // const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   }
 
-  const checkValidData = (name, email) => {
-    const isNameValid = name !== null ? true : false;
-    const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);
-
-    if(!isEmailValid) return "Email ID is not valid";
-    if(!isNameValid) return "Password is not valid";
-
-    return null;
-  }
-
-
-  const handleClick = () => {
-    checkValidData(emailRef.current.value, nameRef.current.value);
+  const handleSignup = () => {
+    const msg = checkValidSignupData(mobileNumberRef.current.value, nameRef.current.value, emailRef.current.value);
+    setErrorMessage(msg);
     //use firebase
-    // console.log(mobileNumberRef.current.value);
+    // navigate("/");
+  }
   
-  // if (mobileNumberRef.current.value.length === 10 && 
-  //     nameRef.current.value.trim() !== "" && 
-  //     emailRef.current.value.includes('@') && 
-  //     checked) {
-  //   return true;
-  // } 
-  // else {
-  //   return false;
-  // }
-    navigate("/");
+  const handleSignin = () => {
+    const msg = checkValidSigninData(mobileNumberRef.current.value);
+    setErrorMessage(msg);
+    //use firebase
+    // navigate("/");
   }
 
   return (
@@ -48,7 +36,7 @@ const Signin = () => {
         <div className="mb-2">
           <input
             ref={mobileNumberRef}
-            className="border border-gray-400 p-3 rounded-sm w-full"
+            className="border border-gray-400 p-3 my-2 rounded-sm w-full"
             type="text"
             placeholder="Mobile Number"
           />
@@ -64,8 +52,9 @@ const Signin = () => {
             type="email"
             placeholder="Email"
           />}  
+          <p className="text-red-500 pb-2">{errorMessage}</p> 
           {!isSignInForm && <input
-            className="border border-black p-1 my-1"
+            className="border border-black mr-1"
             onChange={(e) => setChecked(e.target.checked)}
             id="checkbox"
             type="checkbox"
@@ -73,15 +62,15 @@ const Signin = () => {
           {!isSignInForm && <label>
             I agree to Swiggy's Terms of Service and Privacy Policy.
           </label>}
-        </div>    
+        </div>   
         <button
           // disabled={!checkValidData() && checked}
           className="bg-green-500 p-3 my-2 rounded-md w-full text-white"
-          onClick={handleClick}
+          onClick={isSignInForm ? handleSignin : handleSignup}
         >
           Send OTP
         </button>
-        <hr className="border border-black"/> 
+        <hr/> 
           <p className="mt-1">
             {isSignInForm ? "Already have an account?" : "New to foodie?"}
             <button className="font-bold underline ml-1" onClick={toggleSignInForm}>
