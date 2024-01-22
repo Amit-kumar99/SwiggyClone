@@ -1,5 +1,11 @@
 # swiggy-clone
-- vite bundler
+- Vite bundler
+- Tailwind CSS
+- Routing
+- useState, useEffect & useRef hooks
+- Higher Order Components
+- Form Validation
+- Firebase setup
 
 - App
     - Navbar
@@ -12,4 +18,6 @@
         - RestaurantMenuCategories
         - MenuItemsList
     - Cart 
-    - Signin
+    - Signin/Signup
+
+
