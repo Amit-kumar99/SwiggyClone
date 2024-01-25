@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 const Navbar = () => {
   const cartItems = useSelector((store) => store.cart.cartItems);
   const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
-  const user = useSelector((store) => store.user.usersList);
+  const activeUser = useSelector((store) => store.user.activeUser);
+  // console.log(activeUser);
 
   return (
     <div className="border-b-2 shadow-md">
@@ -14,11 +15,11 @@ const Navbar = () => {
           <div className='my-auto font-semibold text-md text-gray-700 flex'>
             <div className='ml-16 mt-2'>
               <Link className='mx-5' to="/">Home</Link>
+              <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
               {!isLoggedIn ? 
                 (<Link className='mx-5' to="/signin">Sign In</Link>) :
-                (<Link to="/my-account"><i className="fa-solid fa-user"/></Link>)
+                (<Link className='mx-5' to="/my-account"><i className="fa-solid fa-user"/> {activeUser.name}</Link>)
               }
-              <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
             </div>
           </div>
         </div> 

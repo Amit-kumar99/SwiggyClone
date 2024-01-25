@@ -6,7 +6,8 @@ import { otpLogged } from "../utils/userSlice";
 
 const Signin = () => {
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.usersList);
+  const users = useSelector((store) => store.user.usersList);
+  const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [isSignInForm, setIsSignInForm] = useState(true);
   const phoneNumberRef = useRef(null);
@@ -44,11 +45,16 @@ const Signin = () => {
     }
   }
 
-  // get from api / firebase
   const handleOtpVerification = ({otpRef}) => {
-    // pass user info to navbar or redux
     dispatch(otpLogged(otpRef.current.value));
-    navigate("/");
+    if(isLoggedIn){
+      navigate("/");
+      dispatch(addActiveUser({
+        phoneNumber: phoneNumberRef.current.value,
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+        otp: otpRef.current.value}));     
+    }
     // setOtp("");
   }
 

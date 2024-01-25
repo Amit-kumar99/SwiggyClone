@@ -17,6 +17,7 @@ const userSlice = createSlice({
                 otp: "2345",
             }
         ],
+        activeUser: {},
         isLoggedIn: false,
     },
     reducers: {
@@ -24,12 +25,21 @@ const userSlice = createSlice({
             state.usersList.push(action.payload);
         },
         otpLogged: (state, action) => {
+            // console.log(typeof action.payload);
             if(state.usersList.findIndex(item => action.payload === item.otp) !== -1){
                 state.isLoggedIn = true;
             }
             else{
                 alert("Invalid OTP. Please try again");
             }
+        },
+        addActiveUser: (state, action) => {
+            state.activeUser = action.payload;
+        },
+        removeActiveUser: (state) => {
+            state.activeUser = {};
+            // make a logout btn on hover in navbar
+            state.isLoggedIn = false;
         },
     }
 });
