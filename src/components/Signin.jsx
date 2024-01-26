@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkValidSigninData, checkValidSignupData } from "../utils/validations";
 import { useDispatch, useSelector } from "react-redux";
-import { otpLogged } from "../utils/userSlice";
+import { addUser, otpLogged } from "../utils/userSlice";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -22,15 +22,19 @@ const Signin = () => {
   }
 
   const handleSignup = () => {
-    const msg = checkValidSignupData(mobileNumberRef.current.value, nameRef.current.value, emailRef.current.value);
+    const msg = checkValidSignupData(phoneNumberRef.current.value, nameRef.current.value, emailRef.current.value);
     setErrorMessage(msg);
-    if(msg === null) {
+    if(msg === null && users.findIndex(item => item.phoneNumber === phoneNumberRef.current.value) === -1) {
+      setShowOtpInput(true);
       dispatch(addUser({
+        id: 3,
         phoneNumber: phoneNumberRef.current.value,
         name: nameRef.current.value,
         email: emailRef.current.value,
         otp: "1234"}));
-      setShowOtpInput(true);
+    }
+    else if(msg === null){
+      setErrorMessage("Phone number already registered");
     }
   }
   
@@ -45,17 +49,12 @@ const Signin = () => {
     }
   }
 
-  const handleOtpVerification = ({otpRef}) => {
-    dispatch(otpLogged(otpRef.current.value));
+  const handleOtpVerification = () => {
+    dispatch(otpLogged({phoneNumberRef, otpRef}));
     if(isLoggedIn){
       navigate("/");
-      dispatch(addActiveUser({
-        phoneNumber: phoneNumberRef.current.value,
-        name: nameRef.current.value,
-        email: emailRef.current.value,
-        otp: otpRef.current.value}));     
     }
-    // setOtp("");
+    otpRef.current.value = "";
   }
 
   return (
@@ -102,7 +101,7 @@ const Signin = () => {
           </div>  
           <button
             className="bg-orange-400 p-3 my-2 w-full text-white font-bold"
-            onClick={showOtpInput ? () => handleOtpVerification({otpRef}) : (isSignInForm ? handleSignin : handleSignup)}
+            onClick={showOtpInput ? handleOtpVerification : (isSignInForm ? handleSignin : handleSignup)}
           >
             {showOtpInput ? "VERIFY OTP" : (isSignInForm ? "LOGIN" : "CONTINUE")}
           </button>

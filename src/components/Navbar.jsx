@@ -6,7 +6,7 @@ const Navbar = () => {
   const cartItems = useSelector((store) => store.cart.cartItems);
   const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
   const activeUser = useSelector((store) => store.user.activeUser);
-  // console.log(activeUser);
+  console.log(activeUser);
 
   return (
     <div className="border-b-2 shadow-md">
@@ -18,7 +18,8 @@ const Navbar = () => {
               <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
               {!isLoggedIn ? 
                 (<Link className='mx-5' to="/signin">Sign In</Link>) :
-                (<Link className='mx-5' to="/my-account"><i className="fa-solid fa-user"/> {activeUser.name}</Link>)
+                (<Link className='mx-5' to={"/my-account?user=" + activeUser.id}><i className="fa-solid fa-user"/> {activeUser.name}</Link>)
+              // use searchParams, see how used in youtube clone
               }
             </div>
           </div>

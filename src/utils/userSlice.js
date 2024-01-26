@@ -5,12 +5,14 @@ const userSlice = createSlice({
     initialState: {
         usersList: [
             {
+                id: 1,
                 phoneNumber: "9950513488",
                 name: "Tom Cruise",
                 email: "tom@gmail.com",
                 otp: "1234",
             },
             {
+                id: 2,
                 phoneNumber: "9850576499",
                 name: "John Cena",
                 email: "john@gmail.com",
@@ -25,25 +27,24 @@ const userSlice = createSlice({
             state.usersList.push(action.payload);
         },
         otpLogged: (state, action) => {
-            // console.log(typeof action.payload);
-            if(state.usersList.findIndex(item => action.payload === item.otp) !== -1){
+            if(state.usersList.findIndex(item => action.payload.otpRef.current.value === item.otp) !== -1){
                 state.isLoggedIn = true;
+                const activeIndex = state.usersList.findIndex(item => item.phoneNumber === action.payload.phoneNumberRef.current.value);
+                state.activeUser = state.usersList[activeIndex];
+                //navigate
             }
             else{
                 alert("Invalid OTP. Please try again");
             }
         },
-        addActiveUser: (state, action) => {
-            state.activeUser = action.payload;
-        },
+        // make a logout btn on hover in navbar
         removeActiveUser: (state) => {
             state.activeUser = {};
-            // make a logout btn on hover in navbar
             state.isLoggedIn = false;
         },
     }
 });
 
-export const {usersList, otpLogged} = userSlice.actions;
+export const {addUser, otpLogged} = userSlice.actions;
 export default userSlice.reducer;
 

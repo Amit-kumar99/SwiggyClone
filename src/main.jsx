@@ -7,6 +7,7 @@ import Cart from "./components/Cart";
 import Signin from "./components/Signin";
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Error from "./components/Error";
+import MyAccount from './components/MyAccount.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:restaurantId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/my-account",
+        element: <MyAccount />,
       },
     ],
     errorElement: <Error />
