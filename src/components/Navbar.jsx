@@ -18,7 +18,9 @@ const Navbar = () => {
               <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
               {!isLoggedIn ? 
                 (<Link className='mx-5' to="/signin">Sign In</Link>) :
-                (<Link className='mx-5' to={"/my-account?user=" + activeUser.id}><i className="fa-solid fa-user"/> {activeUser.name}</Link>)
+                (<Link className='mx-5' to={"/my-account?user=" + activeUser.id}>
+                  <i className="fa-solid fa-user"/>
+                </Link>)
               // use searchParams, see how used in youtube clone
               }
             </div>
