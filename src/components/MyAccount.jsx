@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import Orders from "./Orders";
+import Addresses from "./Addresses";
 
 const MyAccount = () => {
-  const [searchParams] = useSearchParams();
-  const userId = searchParams.get("v");
   //no. of orders that the user has placed even in the past has to be stored in the backend, check for swiggy, 
   //or it shows only curretn order?
     const activeUser = useSelector((store) => store.user.activeUser);
     const [bgColor1, setBgColor1] = useState("gray");
     const [bgColor2, setBgColor2] = useState("gray");
-    // const [showOrders, setShowOrders] = useState(false);
-    // const [showAddresses, setShowAddresses] = useState(false); 
+    const [showOrders, setShowOrders] = useState(false);
+    const [showAddresses, setShowAddresses] = useState(false); 
 
   return (
     <div className="w-full bg-cyan-700">
@@ -46,9 +45,9 @@ const MyAccount = () => {
                 Addresses
             </div>
           </div>  
-          <div className="border w-8/12 my-14">
-            {/* {showOrders && <Orders/>} */}
-            {/* {showAddresses && <Addresses/>} */}
+          <div className="border border-gray-300 w-8/12 my-14">
+            {showOrders && <Orders/>}
+            {showAddresses && <Addresses/>}
           </div>  
         </div>
       </div>

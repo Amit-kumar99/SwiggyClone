@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { usersList } from "./usersList";
 
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        //this should be in backend
         usersList: [
             {
                 id: 1,
