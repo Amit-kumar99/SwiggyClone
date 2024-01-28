@@ -18,14 +18,14 @@ const DeliveryAddress = ({isLoggedIn}) => {
 
   return (
     <div>
-      {/* header */}
+      {/* head */}
       <h3 className={"font-bold ml-5 text-" + color +"-400"}>Select delivery address</h3>
       {/* body */}
       {isLoggedIn && 
         (<div>
           {deliveryAddressSelected ?
-            (<div>     
-              {currentUserAddresses[selectedAddressIndex].door}, {currentUserAddresses[selectedAddressIndex].landmark},
+            (<div className="border shadow-lg my-3 ml-3 p-2 w-5/12">     
+              {currentUserAddresses[selectedAddressIndex].door}, {currentUserAddresses[selectedAddressIndex].landmark}
               {/* {currentUserAddresses[selectedAddressIndex].state},{currentUserAddresses[selectedAddressIndex].pincode} */}
             </div>) 
               :
@@ -35,27 +35,30 @@ const DeliveryAddress = ({isLoggedIn}) => {
                   <p>{a.door}, {a.landmark} 
                   {/* {a.state}, {a.pincode} */}
                   </p>
-                  <button className="bg-lime-600 font-semibold text-white py-2 px-4 my-3" 
-                    onClick={() => handleDeliveryAddress({index})}>DELIVER HERE</button>
+                  {!showAddressForm && (<button className="bg-lime-600 font-semibold text-white py-2 px-4 my-3" 
+                    onClick={() => handleDeliveryAddress({index})}>DELIVER HERE
+                  </button>)}
                 </div>))
               }
             </div>
           )}   
           {/* setShowAddressForm being passed to addressForm shows error */}
-          {showAddressForm && (<AddressForm setShowAddressForm={setShowAddressForm}/>)}
+          {/* {showAddressForm && (<AddressForm setShowAddressForm={setShowAddressForm}/>)} */}
+          {showAddressForm && (<AddressForm/>)}
           {deliveryAddressSelected ?
-            <button className="text-orange-500 font-bold my-2 p-2 ml-3" 
+            (<button className="text-orange-500 border border-orange-500 font-bold my-2 p-2 ml-3" 
               onClick={() => 
                 {setDeliveryAddressSelected(false);
                   // setShowPaymentInfo(false);
                 }}>
                   CHANGE
-            </button>
+            </button>)
               :
-            <button className="border border-lime-600 text-lime-600 font-semibold my-2 py-2 px-8 ml-3" 
-              onClick={() => {setShowAddressForm(true)}}>
-                ADD NEW
-            </button> 
+            (!showAddressForm && 
+              (<button className="border border-lime-600 text-lime-600 font-semibold my-2 py-2 px-8 ml-3" 
+                onClick={() => {setShowAddressForm(true)}}>
+                  ADD NEW
+              </button>)) 
           }   
         </div>)}
     </div>

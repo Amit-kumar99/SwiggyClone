@@ -12,7 +12,7 @@ const Checkout = () => {
             {/* below works, only signup / login logic not applied */}
             {/* {!isLoggedIn && <Account/>} */}
             
-            {/* <DeliveryAddress isLoggedIn={isLoggedIn} color={color} address={address} setShowPaymentInfo={setShowPaymentInfo}/> */}
+            {/* <DeliveryAddress color={color} setShowPaymentInfo={setShowPaymentInfo}/> */}
             <DeliveryAddress isLoggedIn={isLoggedIn}/>
 
         </div>
@@ -20,12 +20,12 @@ const Checkout = () => {
 }
 
 export default Checkout;
-
-    // const { address} = useContext(UserContext);  
+ 
     // const [showPaymentInfo, setShowPaymentInfo] = useState(false);
     // const [color, setColor] = useState("gray");
 
     // return (
+                    //payments section below 
         //         <div className="bg-white ml-5 py-2">
         //             {/* header */}
         //             <div>
