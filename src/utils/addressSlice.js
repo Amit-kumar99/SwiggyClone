@@ -15,16 +15,14 @@ const addressSlice = createSlice({
         ],
     },
     reducers: {
-        //2 ways : if the user adds in my-account section, or if the user updates in the checkout section
         addAddress: (state, action) => {
             state.allAddresses.push(action.payload);
         },
-        // removeAddress: (state, action) => {
-        //     //match the address id & remove that.
-        //     // state.allAddresses.filter(item => item.id !== action.payload);
-        // }
+        removeAddress: (state, action) => {
+            state.allAddresses = state.allAddresses.filter(item => item.id !== action.payload);
+        }
     }
 });
 
-export const {addAddress} = addressSlice.actions;
+export const {addAddress, removeAddress} = addressSlice.actions;
 export default addressSlice.reducer;

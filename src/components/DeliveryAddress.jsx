@@ -19,7 +19,7 @@ const DeliveryAddress = ({isLoggedIn}) => {
   return (
     <div>
       {/* head */}
-      <h3 className={"font-bold ml-5 text-" + color +"-400"}>Select delivery address</h3>
+      <h3 className={"font-semibold text-lg ml-5 mt-5 text-" + color +"-400"}>Select delivery address</h3>
       {/* body */}
       {isLoggedIn && 
         (<div>

@@ -8,8 +8,7 @@ import DeliveryAddress from "./DeliveryAddress";
 const Checkout = () => {
     const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
     return (
-        <div className="w-8/12 border">
-            {/* below works, only signup / login logic not applied */}
+        <div className="w-8/12 bg-white">
             {/* {!isLoggedIn && <Account/>} */}
             
             {/* <DeliveryAddress color={color} setShowPaymentInfo={setShowPaymentInfo}/> */}

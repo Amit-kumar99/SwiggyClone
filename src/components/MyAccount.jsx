@@ -18,7 +18,7 @@ const MyAccount = () => {
         <div className="flex pt-20 px-10 justify-between">
           <div> 
               <h2 className="font-bold text-3xl">{activeUser.name}</h2>
-              <span>{activeUser.phoneNumber}<span className="">.</span>{activeUser.email}</span>
+              <span>{activeUser.phoneNumber}<span className="mx-1">.</span>{activeUser.email}</span>
           </div>
           <div>
               <button className="border border-white m-2 p-3 font-semibold">EDIT PROFILE</button>
