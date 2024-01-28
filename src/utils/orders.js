@@ -1,5 +1,5 @@
 //fetch activeOrders for that userid
-export const activeOrders = [
+export const orders = [
     {
         userId: 1,
         orderId: 101,
