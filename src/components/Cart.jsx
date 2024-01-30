@@ -49,11 +49,33 @@ const Cart = () => {
                       </div>
                   </div>
                 ))}
-                {cartItemsList.length!==0 && (
+                {cartItemsList.length !== 0 && (
+                    <div className="mx-7 pb-4 text-xs border-b-2 border-black">
+                        <h2 className="font-semibold mb-1">Bill Details</h2>
+                        <div className="text-slate-500">
+                            <p className="mb-1 flex justify-between">
+                                Item Total <div>₹{totalPrice}</div>
+                            </p>
+                            <p className="mb-1 pb-4 border-b  flex justify-between">
+                                Delivery Fee | 1.6 kms <div>₹37</div>
+                            </p>
+                            <p className="mb-1 pt-3  flex justify-between">
+                                Delivery Tip <div className="text-red-400">Add tip</div>
+                            </p>
+                            <p className="mb-1 flex justify-between">
+                                Platform fee <div>₹3</div>
+                            </p>
+                            <p className="mb-1 flex justify-between">
+                                GST and Restaurant Charges <div>₹15.54</div>
+                            </p>        
+                        </div>        
+                    </div>)
+                }
+                {cartItemsList.length !== 0 && (
                     <div className="w-full border-y shadow-md">
-                    <h2 className="font-semibold my-4 mx-2 flex justify-between">
-                        <div>TO PAY</div><div>₹{totalPrice}</div>
-                    </h2>
+                        <div className="font-semibold my-4 mx-2 flex justify-between">
+                            <div>TO PAY</div><div>₹{totalPrice}</div>
+                        </div>
                     </div>)
                 }  
             </div>  
