@@ -4,7 +4,7 @@ import { checkValidSigninData, checkValidSignupData } from "../utils/validations
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, otpLogged } from "../utils/userSlice";
 
-const Signin = () => {
+const Authentication = () => {
   const dispatch = useDispatch();
   const users = useSelector((store) => store.user.usersList);
   const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
@@ -58,8 +58,9 @@ const Signin = () => {
   }
 
   return (
-    <div className="border w-4/12 ml-auto h-[613px]">
-      <div className="w-9/12">
+    // h-[613px]
+    <div className="ml-auto ">
+      <div className="w-6/12">
         <div className="my-8 ml-4">
           <h2 className="text-4xl mb-2">{showOtpInput ? "Enter OTP" : (isSignInForm ? "Login" : "Sign up")}</h2>
           {showOtpInput ? 
@@ -75,25 +76,25 @@ const Signin = () => {
           <div className="mb-2">
             <input
               ref={phoneNumberRef}
-              className="border border-gray-400 p-4 w-full"
+              className="border border-gray-400 p-5 w-full"
               type="text"
               placeholder="Phone Number"
             />
             {(!isSignInForm && !showOtpInput) && (<input
               ref={nameRef}
-              className="border border-gray-400 p-4 w-full"
+              className="border border-gray-400 p-5 w-full"
               type="text"
               placeholder="Name"
             />)}
             {(!isSignInForm && !showOtpInput) && (<input
               ref={emailRef}
-              className="border border-gray-400 p-4 w-full"
+              className="border border-gray-400 p-5 w-full"
               type="email"
               placeholder="Email"
             />)}  
             {showOtpInput && (<input
               ref={otpRef}
-              className="border border-gray-400 p-4 w-full"
+              className="border border-gray-400 p-5 w-full"
               type="text"
               placeholder="Enter OTP"
             />)}  
@@ -114,4 +115,4 @@ const Signin = () => {
   );
 }
 
-export default Signin;
+export default Authentication;

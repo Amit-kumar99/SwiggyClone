@@ -8,7 +8,7 @@ const SearchBar = ({restaurantsList, setFilteredRestaurantsList}) => {
   }
 
   return (
-    <div className="flex border pr-2 mt-5 ml-3 mb-4 justify-between rounded-md">
+    <div className="flex border pr-2 mt-5 ml-3 mb-4 justify-between">
       <div className="w-full pr-2">
         <input 
           ref={searchRef}

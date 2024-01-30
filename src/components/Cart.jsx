@@ -1,18 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addItems, removeItems, clearCart } from "../utils/cartSlice";
+import { addItems, removeItems } from "../utils/cartSlice";
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
 import { useEffect, useState } from "react";
 import Checkout from "./Checkout";
 
 const Cart = () => {
+  const isLoggedIn = useSelector((store) => store.user.isLoggedIn);
   const dispatch = useDispatch();
   const cartItemsList = useSelector((store) => store.cart.cartItems);
   const countOfAllCartItems = useSelector((store) => store.cart.countOfAllCartItems);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  const handleClearCart = () => {
-    dispatch(clearCart());
-  }
 
   useEffect(()=>{
     const arr = cartItemsList.map((x, index) => x.card.info.price / 100 * countOfAllCartItems[index]);
@@ -24,50 +21,43 @@ const Cart = () => {
   return (
     <div className="bg-gray-200 h-[610px]">
       <div className="flex w-10/12 mx-auto pt-5">
-        {cartItemsList.length === 0 && <Checkout/>}
-        <div className="p-5 w-3/12 ml-10 bg-white">
-          <h2 className="font-bold text-2xl">Cart</h2>
-          {cartItemsList.length!==0 ? (
-            <button 
-              className="bg-black text-white p-2 rounded-md mt-3"
-              onClick={handleClearCart}
-              >Clear Cart
-            </button>)
-          :
-            (cartItemsList.length === 0 && <h1>Your cart is empty. Add items to your cart.</h1>)
-          }
+        {cartItemsList.length !== 0 && <Checkout/>}
+        <div className="w-3/12 ml-10 bg-white">
+          {cartItemsList.length === 0 && 
+            (<h1 className="my-2 mx-4">Your cart is empty. Add items to your cart.</h1>)}
           {cartItemsList.map((item, index)=>(
-                <div className="mt-8 flex border-b-2 p-4 border-gray-300 justify-between" key={item.card.info.id}>
-                    <div className="p-2 w-9/12"> 
-                      <p className="font-bold">{item.card.info.name}</p>
-                      <p>
-                        ₹{item.card.info.price / 100} * {countOfAllCartItems[index]} = {item.card.info.price / 100 * countOfAllCartItems[index]}
-                      </p>
-                      <p className="font-normal text-gray-500 text-xs">{item.card.info.description}</p>
-                      <p className="border inline-block mt-2 py-1 px-2">
-                      <i 
-                        className="fa-solid fa-minus pr-3 cursor-pointer" 
-                        style ={{ color: "#bb0202"}}
-                        onClick={() => {dispatch(removeItems(item))}}
-                        />  
-                          {countOfAllCartItems[index]}  
-                      <i  
-                        className="fa-solid fa-plus pl-3 cursor-pointer" 
-                        style ={{ color: "#59b210"}}
-                        onClick={() => {dispatch(addItems(item))}}/>
-                      </p>
-                    </div>
-                    <div>
-                      <img className="w-40 rounded-md"
-                        src={MENU_ITEMS_IMG_API + item.card.info.imageId} />
+                <div className="w-full flex p-2 border-gray-300 justify-between" key={item.card.info.id}>
+                    <div className="w-full"> 
+                      <div className="flex">
+                        <img className="w-12 h-10 mr-3"
+                          src={MENU_ITEMS_IMG_API + item.card.info.imageId} />
+                        <p className="font-semibold text-lg">{item.card.info.name}</p>
+                      </div>
+                      <div className="flex w-full my-2 justify-between">
+                        <div className="text-sm mt-3">{item.card.info.name}</div>
+                        <div className="border inline-block mt-2 py-1 px-2">
+                          <i 
+                            className="fa-solid fa-minus pr-2 cursor-pointer" 
+                            style ={{ color: "#bb0202"}}
+                            onClick={() => {dispatch(removeItems(item))}}
+                            />  
+                              {countOfAllCartItems[index]}  
+                          <i  
+                            className="fa-solid fa-plus pl-2 cursor-pointer" 
+                            style ={{ color: "#59b210"}}
+                            onClick={() => {dispatch(addItems(item))}}/>
+                        </div>
+                        <div className="mt-3">₹{item.card.info.price / 100 * countOfAllCartItems[index]}</div>
+                      </div>
                     </div>
                 </div>
             ))}
-            {cartItemsList.length!==0 && (<div>
-              <h2 className="font-semibold text-2xl my-2">
-                TOTAL PRICE : {totalPrice}
-              </h2>
-            </div>)}    
+            {cartItemsList.length!==0 && (
+              <div className="w-full border-y shadow-md">
+                <h2 className="font-semibold my-4 mx-2 flex justify-between">
+                  <div>TO PAY</div><div>₹{totalPrice}</div>
+                </h2>
+              </div>)}    
         </div>
       </div>
     </div>  

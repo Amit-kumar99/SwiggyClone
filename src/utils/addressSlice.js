@@ -19,7 +19,8 @@ const addressSlice = createSlice({
             state.allAddresses.push(action.payload);
         },
         removeAddress: (state, action) => {
-            state.allAddresses = state.allAddresses.filter(item => item.id !== action.payload);
+            // below doesn't work properly
+            // state.allAddresses = state.allAddresses.filter(item => item.id !== action.payload);
         }
     }
 });

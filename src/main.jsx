@@ -4,7 +4,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
-import Signin from "./components/Signin";
+import Authentication from './components/Authentication.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Error from "./components/Error";
 import MyAccount from './components/MyAccount.jsx';
@@ -20,7 +20,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/signin",
-        element: <Signin/>
+        element: <Authentication/>
       },
       {
         path: "/cart",
