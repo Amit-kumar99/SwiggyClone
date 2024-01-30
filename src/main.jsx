@@ -3,11 +3,11 @@ import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
-import Cart from "./components/Cart";
 import Authentication from './components/Authentication.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Error from "./components/Error";
 import MyAccount from './components/MyAccount.jsx';
+import Checkout from './components/Checkout.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -23,8 +23,8 @@ const appRouter = createBrowserRouter([
         element: <Authentication/>
       },
       {
-        path: "/cart",
-        element: <Cart/>
+        path: "/checkout",
+        element: <Checkout/>
       },
       {
         path: "/restaurants/:restaurantId",

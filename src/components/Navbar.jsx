@@ -15,7 +15,7 @@ const Navbar = () => {
           <div className='my-auto font-semibold text-md text-gray-700 flex'>
             <div className='ml-16 mt-2'>
               <Link className='mx-5' to="/">Home</Link>
-              <Link className='mx-5' to="/cart">Cart [{cartItems.length}]</Link>
+              <Link className='mx-5' to="/checkout">Cart [{cartItems.length}]</Link>
               {!isLoggedIn ? 
                 (<Link className='mx-5' to="/signin">Sign In</Link>) :
                 (<Link className='mx-5' to="/my-account">

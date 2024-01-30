@@ -26,7 +26,7 @@ const Account = () => {
                     </div>)
                 }
                 {displayLoginForm && <Authentication/>}
-                
+
                 {/* set the setIsSignForm to false for below*/}
                 {/* {displaySignupForm && <Signin/>} */}
                 
