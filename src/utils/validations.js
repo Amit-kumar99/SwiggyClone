@@ -17,3 +17,13 @@ export const checkValidSigninData = (mobileNumber) => {
 
     return null;
 }
+
+export const checkAddressValid = (door, landmark) => {
+    const isDoorValid = door.length > 0;
+    const isLandmarkValid = landmark.length > 0;
+
+    if(!isDoorValid) return "Door is not valid";
+    if(!isLandmarkValid) return "Landmark is not valid";
+    
+    return null;
+}

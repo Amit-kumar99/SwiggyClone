@@ -1,30 +1,42 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../utils/addressSlice";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { checkAddressValid } from "../utils/validations";
 
-// const AddressForm = ({setShowAddressForm}) => {
-    const AddressForm = () => {
+const AddressForm = ({setShowAddressForm}) => {
     const userId = useSelector((store) => store.user.activeUser.id);
     const doorRef = useRef(null);
     const landmarkRef = useRef(null);
     const dispatch = useDispatch();
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [id, setId] = useState(10);
+
+    //why does id not change
+    // useEffect(() => {
+    //     console.log(id);
+    // }, [id]);
 
     const handleAddressClick = () => {
         // validate address form here or in reducer
-        const id = 11;
-        const door = doorRef.current.value;
-        const landmark = landmarkRef.current.value;
-        console.log(door, landmark);
-        dispatch(addAddress({userId, id, door, landmark}));
+        const msg = checkAddressValid(doorRef.current.value, landmarkRef.current.value);
+        setErrorMessage(msg);
+        if (msg == null) {
+            const door = doorRef.current.value;
+            const landmark = landmarkRef.current.value;
+            // setId((prevId) => prevId + 1);
+            dispatch(addAddress({userId, id, door, landmark}));
+            console.log(id);
+            setShowAddressForm(false);
+        }
     }
 
     return (
         <div className="border ml-3 px-5 pt-3 py-6 w-10/12 mx-auto">
             <div className="flex justify-between mx-2 fa-lg">
                 <h1 className="font-bold text-lg">Save delivery Address</h1>
-                <i className="fa-solid fa-xmark pt-1"
-                    // onClick={setShowAddressForm(false)}
-                    />
+                <button onClick={() => setShowAddressForm(false)}>
+                    <i className="fa-solid fa-xmark pt-1" />
+                </button>
             </div>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div>
@@ -41,6 +53,7 @@ import { useRef } from "react";
                         type="text" 
                         placeholder="Landmark"/>
                 </div>
+                <p className="text-red-500 mt-2">{errorMessage}</p>
                 <div>
                     <button className="bg-orange-500 text-white font-semibold p-3 mt-3 w-full" 
                         onClick={handleAddressClick}>SAVE ADDRESS</button>

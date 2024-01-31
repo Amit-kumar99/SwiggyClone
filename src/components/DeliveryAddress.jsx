@@ -8,6 +8,7 @@ const DeliveryAddress = ({isLoggedIn, deliveryAddressSelected, setDeliveryAddres
   const activeUser = useSelector((store) => store.user.activeUser);
   const allAddresses = useSelector((store) => store.address.allAddresses);
   const currentUserAddresses = allAddresses.filter(address => address.userId === activeUser.id);
+  console.log(currentUserAddresses);
   const color = "gray";
 
   const handleDeliveryAddress = ({index}) => {
@@ -38,11 +39,11 @@ const DeliveryAddress = ({isLoggedIn, deliveryAddressSelected, setDeliveryAddres
                     </button>)}
                 </div>))
               }
-            </div>
-          )}   
-          {/* setShowAddressForm being passed to addressForm shows error */}
-          {/* {showAddressForm && (<AddressForm setShowAddressForm={setShowAddressForm}/>)} */}
-          {showAddressForm && (<AddressForm/>)}
+            </div>)
+          }   
+
+          {/* show using free maps api */}
+          {showAddressForm && (<AddressForm setShowAddressForm={setShowAddressForm}/>)}
           {deliveryAddressSelected ?
             (<button className="text-orange-500 border border-orange-500 font-bold my-2 p-2 ml-3" 
               onClick={() => 

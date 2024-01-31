@@ -21,17 +21,19 @@ const Authentication = () => {
     setIsSignInForm(!isSignInForm);
   }
 
+  let id = 3;
   const handleSignup = () => {
     const msg = checkValidSignupData(phoneNumberRef.current.value, nameRef.current.value, emailRef.current.value);
     setErrorMessage(msg);
     if(msg === null && users.findIndex(item => item.phoneNumber === phoneNumberRef.current.value) === -1) {
       setShowOtpInput(true);
       dispatch(addUser({
-        id: 3,
+        id: id,
         phoneNumber: phoneNumberRef.current.value,
         name: nameRef.current.value,
         email: emailRef.current.value,
         otp: "1234"}));
+        id ++;
     }
     else if(msg === null){
       setErrorMessage("Phone number already registered");
