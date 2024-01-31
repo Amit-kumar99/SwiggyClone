@@ -19,11 +19,11 @@ const Cart = () => {
 
   return (
     <div className="w-4/12 ml-8 bg-white">
-          <div>
+        <div className="p-7">
             {cartItemsList.length === 0 && 
                 (<h1 className="my-2 mx-4">Your cart is empty. Add items to your cart.</h1>)}
                 {cartItemsList.map((item, index)=>(
-                    <div className="w-full flex p-2 border-gray-300 justify-between" key={item.card.info.id}>
+                    <div className="w-full flex border-gray-300 justify-between" key={item.card.info.id}>
                         <div className="w-full"> 
                             <div className="flex">
                                 <img className="w-12 h-10 mr-3"
@@ -44,13 +44,13 @@ const Cart = () => {
                                     style ={{ color: "#59b210"}}
                                     onClick={() => {dispatch(addItems(item))}}/>
                                 </div>
-                            <div className="mt-3">₹{item.card.info.price / 100 * countOfAllCartItems[index]}</div>
-                        </div>
+                                <div className="mt-3">₹{item.card.info.price / 100 * countOfAllCartItems[index]}</div>
+                            </div>
                       </div>
                   </div>
                 ))}
                 {cartItemsList.length !== 0 && (
-                    <div className="mx-7 pb-4 text-xs border-b-2 border-black">
+                    <div className="pb-4 text-xs border-b-2 border-black">
                         <h2 className="font-semibold mb-1">Bill Details</h2>
                         <div className="text-slate-500">
                             <p className="mb-1 flex justify-between">
@@ -65,20 +65,20 @@ const Cart = () => {
                             <p className="mb-1 flex justify-between">
                                 Platform fee <div>₹3</div>
                             </p>
-                            <p className="mb-1 flex justify-between">
+                            <p className="pb-1 flex justify-between">
                                 GST and Restaurant Charges <div>₹15.54</div>
                             </p>        
                         </div>        
                     </div>)
                 }
-                {cartItemsList.length !== 0 && (
-                    <div className="w-full border-y shadow-md">
-                        <div className="font-semibold my-4 mx-2 flex justify-between">
-                            <div>TO PAY</div><div>₹{totalPrice}</div>
-                        </div>
-                    </div>)
-                }  
             </div>  
+            {cartItemsList.length !== 0 && (
+                <div className="w-full border-y shadow-md">
+                    <div className="font-semibold py-4 mx-2 flex justify-between">
+                        <div>TO PAY</div><div>₹{totalPrice}</div>
+                    </div>
+                </div>)
+            } 
         </div>
     )
 }

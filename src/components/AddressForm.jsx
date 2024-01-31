@@ -25,6 +25,7 @@ const AddressForm = ({setShowAddressForm}) => {
             const landmark = landmarkRef.current.value;
             // setId((prevId) => prevId + 1);
             dispatch(addAddress({userId, id, door, landmark}));
+            // dispatch(addAddress({userId, door, landmark}));
             console.log(id);
             setShowAddressForm(false);
         }

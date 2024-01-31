@@ -46,6 +46,6 @@ const userSlice = createSlice({
     }
 });
 
-export const {addUser, otpLogged} = userSlice.actions;
+export const {addUser, otpLogged, removeActiveUser} = userSlice.actions;
 export default userSlice.reducer;
 

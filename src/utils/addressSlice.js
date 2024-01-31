@@ -13,10 +13,14 @@ const addressSlice = createSlice({
                 // pincode: 570112,
             },
         ],
+        // addressId : 11,
     },
     reducers: {
         addAddress: (state, action) => {
             state.allAddresses.push(action.payload);
+            // const idObject = {id: state.addressId};
+            // state.allAddresses.push(action.payload.userId, {...idObject}, action.payload.door, action.payload.landmark);
+            // state.addressId += 1;
         },
         removeAddress: (state, action) => {
             // below doesn't work properly
