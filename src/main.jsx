@@ -8,6 +8,7 @@ import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Error from "./components/Error";
 import MyAccount from './components/MyAccount.jsx';
 import Checkout from './components/Checkout.jsx';
+import PaymentMethods from './components/PaymentMethods.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const appRouter = createBrowserRouter([
         path: "/my-account",
         element: <MyAccount />,
       },
+      {
+        path: "/payment",
+        element: <PaymentMethods />,
+      }
     ],
     errorElement: <Error />
   }

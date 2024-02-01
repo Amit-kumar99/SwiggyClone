@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { MENU_ITEMS_IMG_API } from "../utils/constants";
 import { addItems, removeItems } from "../utils/cartSlice";
 
 
@@ -18,20 +17,20 @@ const Cart = () => {
       },[cartItemsList, countOfAllCartItems]);
 
   return (
-    <div className="w-4/12 ml-8 bg-white">
+    <div className="w-3/12 ml-8 bg-white">
         <div className="p-7">
             {cartItemsList.length === 0 && 
                 (<h1 className="my-2 mx-4">Your cart is empty. Add items to your cart.</h1>)}
+                {/* below should be restaurant img */}
+                                {/* <img className="w-12 h-10 mr-3"
+                                    src={MENU_ITEMS_IMG_API + item.card.info.imageId} /> */}
+                                {/* restaurant name */}
+                                {/* <p className="font-semibold text-lg">{item.card.info.name}</p> */}
                 {cartItemsList.map((item, index)=>(
                     <div className="w-full flex border-gray-300 justify-between" key={item.card.info.id}>
                         <div className="w-full"> 
-                            <div className="flex">
-                                <img className="w-12 h-10 mr-3"
-                                    src={MENU_ITEMS_IMG_API + item.card.info.imageId} />
-                                <p className="font-semibold text-lg">{item.card.info.name}</p>
-                            </div>
                             <div className="flex w-full my-2 justify-between">
-                                <div className="text-sm mt-3">{item.card.info.name}</div>
+                                <div className="text-sm mt-3 w-2/12">{item.card.info.name}</div>
                                 <div className="border inline-block mt-2 py-1 px-2">
                                     <i 
                                     className="fa-solid fa-minus pr-2 cursor-pointer" 
@@ -53,21 +52,21 @@ const Cart = () => {
                     <div className="pb-4 text-xs border-b-2 border-black">
                         <h2 className="font-semibold mb-1">Bill Details</h2>
                         <div className="text-slate-500">
-                            <p className="mb-1 flex justify-between">
+                            <div className="mb-1 flex justify-between">
                                 Item Total <div>₹{totalPrice}</div>
-                            </p>
-                            <p className="mb-1 pb-4 border-b  flex justify-between">
+                            </div>
+                            <div className="mb-1 pb-4 border-b  flex justify-between">
                                 Delivery Fee | 1.6 kms <div>₹37</div>
-                            </p>
-                            <p className="mb-1 pt-3  flex justify-between">
+                            </div>
+                            <div className="mb-1 pt-3  flex justify-between">
                                 Delivery Tip <div className="text-red-400">Add tip</div>
-                            </p>
-                            <p className="mb-1 flex justify-between">
+                            </div>
+                            <div className="mb-1 flex justify-between">
                                 Platform fee <div>₹3</div>
-                            </p>
-                            <p className="pb-1 flex justify-between">
+                            </div>
+                            <div className="pb-1 flex justify-between">
                                 GST and Restaurant Charges <div>₹15.54</div>
-                            </p>        
+                            </div>        
                         </div>        
                     </div>)
                 }
