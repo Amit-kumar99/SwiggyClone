@@ -74,7 +74,8 @@ const Cart = () => {
             {cartItemsList.length !== 0 && (
                 <div className="w-full border-y shadow-md">
                     <div className="font-semibold py-4 mx-2 flex justify-between">
-                        <div>TO PAY</div><div>₹{totalPrice}</div>
+                        <div>TO PAY</div>
+                        <div>₹{totalPrice}</div>
                     </div>
                 </div>)
             } 
