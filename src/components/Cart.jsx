@@ -9,6 +9,18 @@ const Cart = () => {
     const countOfAllCartItems = useSelector((store) => store.cart.countOfAllCartItems);
     const [totalPrice, setTotalPrice] = useState(0);
 
+    // useEffect(() => {
+    //     const storedCartItems = JSON.parse(localStorage.getItem('cartItemsList', JSON.stringify(cartItemsList)));
+    // }, [whenever refreshed])
+
+    // getLocalCartData = () => {
+    //     const storedCartItems = JSON.parse(localStorage.getItem('cartItemsList', JSON.stringify(cartItemsList)));
+    // }
+
+    // useEffect(() => {
+    //     localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
+    // }, [cartItemsList]);
+
     useEffect(()=>{
         const arr = cartItemsList.map((x, index) => x.card.info.price / 100 * countOfAllCartItems[index]);
         setTotalPrice(arr.reduce((accumulator, currentValue) => {
