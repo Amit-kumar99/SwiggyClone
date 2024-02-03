@@ -9,11 +9,7 @@ import SearchBar from "./SearchBar";
 
 const Home = () => {
   const [restaurantsList, setRestaurantsList] = useState(null);
-  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState(null);
-
-  useEffect(() => {
-    fetchRestaurants().catch((err) => console.log(err));
-  }, []);
+  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState(null);  
 
   const fetchRestaurants = async () => {
     const data = await fetch(RESTAURANTS_API);
@@ -22,6 +18,10 @@ const Home = () => {
     setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
+
+  useEffect(() => {
+    fetchRestaurants().catch((err) => console.log(err));
+  }, []);
 
   return filteredRestaurantsList===null ? <Shimmer/> : (
     <div>
