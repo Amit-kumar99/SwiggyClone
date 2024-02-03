@@ -1,35 +1,40 @@
 import { useDispatch, useSelector } from "react-redux";
 import { MENU_ITEMS_IMG_API } from "../utils/constants";
 import { addOrder } from "../utils/orderSlice";
+import { useNavigate } from "react-router-dom";
 
 const PaymentMethods = () => {
     const dispatch = useDispatch();
-    const userId = useSelector((store) => store.user.activeUser.id);
+    const activeUserId = useSelector((store) => store.user.activeUser.id);
     const cartItemsList = useSelector((store) => store.cart.cartItems);
     const cartItemsCount = useSelector((store) => store.cart.countOfAllCartItems);
-    console.log(cartItemsList[0]);
-    // multiple cart items are inside one order, or multiple items are each assigned a separate order Id ???
-    const order = [];
-    let cartItem = {};
+    const navigate = useNavigate();
 
-    order.push(userId);
+    const orders = useSelector((store) => store.order.allOrders).filter(item => item.userId === activeUserId)[0].items;
+
+    // multiple cart items can be inside one order.
+    const order = {};
+    let items = [];
+    order.userId = activeUserId;
+    order.items = items;
 
     for(let i=0; i<cartItemsList.length; i++) {
-        cartItem.count = cartItemsCount[i];
-        cartItem.price = cartItemsList[i].card.info.price/100 * cartItemsCount[i];
-        cartItem.name = cartItemsList[i].card.info.name;
-        // cartItem.restaurantName = enter restaurant name
-        cartItem.imageUrl = MENU_ITEMS_IMG_API + cartItemsList[i].card.info.imageId;
-        cartItem.id = cartItemsList[i].card.info.id;
-        order.push(cartItem);
-        cartItem = {};
+        items[i] = {};
+        items[i].id = cartItemsList[i].card.info.id;
+        items[i].imageUrl = MENU_ITEMS_IMG_API + cartItemsList[i].card.info.imageId;
+        // items.restaurantName = enter restaurant name
+        items[i].name = cartItemsList[i].card.info.name;
+        items[i].price = cartItemsList[i].card.info.price/100 * cartItemsCount[i];
+        items[i].count = cartItemsCount[i];
     }
-    console.log("order:", order); 
+    console.log(order); 
 
     const handlePayment = () => {
         // if (payment success){
             // console.log(cartItems);
             dispatch(addOrder(order));
+            console.log(orders);
+            navigate("/my-account");
         // }
     }
 
