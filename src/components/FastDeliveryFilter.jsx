@@ -1,5 +1,3 @@
-import React from 'react'
-
 const FastDeliveryFilter = ({isActive, onToggle}) => {
   return (
     <div className="m-1">
@@ -12,4 +10,4 @@ const FastDeliveryFilter = ({isActive, onToggle}) => {
   )
 }
 
-export default FastDeliveryFilter
+export default FastDeliveryFilter;
