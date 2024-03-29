@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Pages/Home/Home.jsx";
 import Authentication from "./components/common/Authentication.jsx";
 import RestaurantMenu from "./components/Pages/RestaurantMenu/RestaurantMenu.jsx";
-import Error from "./components/Pages/Error.jsx";
+import Error from "./components/Pages/Error/Error.jsx";
 import MyAccount from "./components/Pages/Profile/MyAccount.jsx";
 import Checkout from "./components/Pages/Checkout/Checkout.jsx";
-import PaymentMethods from "./components/Pages/PaymentMethods.jsx";
+import PaymentMethods from "./components/Pages/PaymentMethods/PaymentMethods.jsx";
 
 const appRouter = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import Filters from "./Filters";
-import RestaurantCard, { ExclusiveRestaurantCard } from "../RestaurantMenu/RestaurantCard";
+import RestaurantCard, { ExclusiveRestaurantCard } from "./RestaurantCard";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Shimmer from "../../common/Shimmer";
