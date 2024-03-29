@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { LOGO_URL } from "../utils/constants";
+import { LOGO_URL } from "../../../utils/constants";
 import { useDispatch, useSelector } from 'react-redux';
-import { removeActiveUser } from '../utils/userSlice';
+import { removeActiveUser } from '../../../utils/userSlice';
 import { useState } from 'react';
 
 const Navbar = () => {

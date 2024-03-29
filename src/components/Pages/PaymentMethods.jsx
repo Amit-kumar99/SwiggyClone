@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MENU_ITEMS_IMG_API } from "../utils/constants";
-import { addOrder } from "../utils/orderSlice";
+import { MENU_ITEMS_IMG_API } from "../../utils/constants";
+import { addOrder } from "../../utils/orderSlice";
 import { useNavigate } from "react-router-dom";
 
 const PaymentMethods = () => {

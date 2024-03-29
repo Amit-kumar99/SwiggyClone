@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Authentication from "./Authentication";
+import Authentication from "../../common/Authentication";
 
 const Account = () => {
     const [displayLoginForm, setDisplayLoginForm] = useState(false);

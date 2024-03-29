@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addAddress } from "../utils/addressSlice";
+import { addAddress } from "../../../utils/addressSlice";
 import { useEffect, useRef, useState } from "react";
-import { checkAddressValid } from "../utils/validations";
+import { checkAddressValid } from "../../../utils/validations";
 
 const AddressForm = ({setShowAddressForm}) => {
     const userId = useSelector((store) => store.user.activeUser.id);

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { MENU_ITEMS_IMG_API } from "../utils/constants";
-import { addItems } from "../utils/cartSlice";
+import { MENU_ITEMS_IMG_API } from "../../../utils/constants";
+import { addItems } from "../../../utils/cartSlice";
 
 const MenuItemsList = ({menuItems}) => {
     console.log(menuItems[0]);

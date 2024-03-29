@@ -1,10 +1,10 @@
 import Filters from "./Filters";
-import RestaurantCard, { ExclusiveRestaurantCard } from "./RestaurantCard";
+import RestaurantCard, { ExclusiveRestaurantCard } from "../RestaurantMenu/RestaurantCard";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import Shimmer from "./Shimmer";
+import Shimmer from "../../common/Shimmer";
 import SearchBar from "./SearchBar";
-import useFetchRestaurants from "../customHooks/useFetchRestaurants";
+import useFetchRestaurants from "../../../customHooks/useFetchRestaurants";
 
 const Home = () => {
   const { restaurantsList, filteredRestaurantsList, setFilteredRestaurantsList } = useFetchRestaurants();

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeAddress } from "../utils/addressSlice";
+import { removeAddress } from "../../../utils/addressSlice";
 
 const Addresses = () => {
     const dispatch = useDispatch();

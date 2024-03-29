@@ -1,31 +1,31 @@
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home";
-import Authentication from './components/Authentication.jsx';
-import RestaurantMenu from './components/RestaurantMenu.jsx';
-import Error from "./components/Error";
-import MyAccount from './components/MyAccount.jsx';
-import Checkout from './components/Checkout.jsx';
-import PaymentMethods from './components/PaymentMethods.jsx';
+import Home from "./components/Pages/Home/Home.jsx";
+import Authentication from "./components/common/Authentication.jsx";
+import RestaurantMenu from "./components/Pages/RestaurantMenu/RestaurantMenu.jsx";
+import Error from "./components/Pages/Error.jsx";
+import MyAccount from "./components/Pages/Profile/MyAccount.jsx";
+import Checkout from "./components/Pages/Checkout/Checkout.jsx";
+import PaymentMethods from "./components/Pages/PaymentMethods.jsx";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: "/signin",
-        element: <Authentication/>
+        element: <Authentication />,
       },
       {
         path: "/checkout",
-        element: <Checkout/>
+        element: <Checkout />,
       },
       {
         path: "/restaurants/:restaurantId",
@@ -38,14 +38,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/payment",
         element: <PaymentMethods />,
-      }
+      },
     ],
-    errorElement: <Error />
-  }
-])
+    errorElement: <Error />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={appRouter}>
     <App />
   </RouterProvider>
-)
+);

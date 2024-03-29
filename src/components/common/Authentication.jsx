@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkValidSigninData, checkValidSignupData } from "../utils/validations";
+import { checkValidSigninData, checkValidSignupData } from "../../utils/validations";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, otpLogged } from "../utils/userSlice";
+import { addUser, otpLogged } from "../../utils/userSlice";
 
 const Authentication = () => {
   const dispatch = useDispatch();
