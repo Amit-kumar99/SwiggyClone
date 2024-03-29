@@ -1,31 +1,21 @@
-import { useEffect, useState } from "react";
-import { RESTAURANTS_API } from "../utils/constants";
 import Filters from "./Filters";
 import RestaurantCard, { ExclusiveRestaurantCard } from "./RestaurantCard";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import SearchBar from "./SearchBar";
+import useFetchRestaurants from "../customHooks/useFetchRestaurants";
 
 const Home = () => {
-  const [restaurantsList, setRestaurantsList] = useState(null);
-  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState(null);  
+  const { restaurantsList, filteredRestaurantsList, setFilteredRestaurantsList } = useFetchRestaurants();
 
-  const fetchRestaurants = async () => {
-    const data = await fetch(RESTAURANTS_API);
-    const json = await data.json();
-    // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurantsList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  if (filteredRestaurantsList === null) {
+    return <Shimmer />;
   }
 
-  useEffect(() => {
-    fetchRestaurants().catch((err) => console.log(err));
-  }, []);
-
-  return filteredRestaurantsList===null ? <Shimmer/> : (
+  return (
     <div>
-      <div className="body w-10/12 m-auto">
+      <div className="w-10/12 m-auto">
         <SearchBar restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
         <Filters restaurantsList={restaurantsList} setFilteredRestaurantsList={setFilteredRestaurantsList}/>
         <h1 className="font-bold mx-4 text-3xl">

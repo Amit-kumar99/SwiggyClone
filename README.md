@@ -1,11 +1,10 @@
 # swiggy-clone
 - Vite bundler
 - Tailwind CSS
-- Routing
+- react-router-dom
 - useState, useEffect & useRef hooks
 - Higher Order Components
 - Form Validation
-- Firebase setup
 
 - App
     - Navbar

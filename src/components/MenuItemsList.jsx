@@ -3,7 +3,7 @@ import { MENU_ITEMS_IMG_API } from "../utils/constants";
 import { addItems } from "../utils/cartSlice";
 
 const MenuItemsList = ({menuItems}) => {
-    // console.log(menuItems[0]);
+    console.log(menuItems[0]);
     const dispatch = useDispatch();
 
     const handleAddItems = ({item}) => {
@@ -12,7 +12,7 @@ const MenuItemsList = ({menuItems}) => {
 
     return (
         <div>
-            {menuItems.map((item)=>(
+            {menuItems && menuItems.map((item)=>(
                 <div className="flex border-b-2 p-4 border-gray-300 justify-between" key={item.card.info.id}>
                     <div className="p-2 w-9/12"> 
                     <p>{item.card.info.name}</p>

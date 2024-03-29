@@ -12,8 +12,23 @@ const addressSlice = createSlice({
                 // state: "Hyderabad",
                 // pincode: 570112,
             },
+            {
+                userId: 1,
+                id: 13,
+                door: "78-C",
+                landmark: "Tom Street"
+                // state: "Hyderabad",
+                // pincode: 570112,
+            },
+            {
+                userId: 2,
+                id: 12,
+                door: "78-A",
+                landmark: "Wall Street"
+                // state: "Hyderabad",
+                // pincode: 570112,
+            },
         ],
-        // addressId : 11,
     },
     reducers: {
         addAddress: (state, action) => {

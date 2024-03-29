@@ -34,14 +34,21 @@ const Filters = ({restaurantsList, setFilteredRestaurantsList}) => {
     if(activeFilters.pureVeg){
       filteredList=filteredList.filter((item) => item.info.veg === true);
     }
-    if(activeFilters.highPrice){
+    if(activeFilters.highPrice && activeFilters.lowPrice){
+      filteredList=filteredList.filter((item) => {
+        const costString=item.info.costForTwo;
+        let matches = costString.match(/\d+/);
+        return (matches[0] <= 300 || (matches[0] >= 300 && matches[0] <= 600));
+      });
+    }
+    else if(activeFilters.highPrice){
       filteredList=filteredList.filter((item) => {
         const costString=item.info.costForTwo;
         let matches = costString.match(/\d+/);
         return (matches[0] >= 300 && matches[0] <= 600);
       });
     }
-    if(activeFilters.lowPrice){
+    else if(activeFilters.lowPrice){
       filteredList=filteredList.filter((item) => {
         const costString=item.info.costForTwo;
         let matches = costString.match(/\d+/);
