@@ -36,8 +36,8 @@ const PaymentMethods = () => {
     }
 
     return (
-        <div className="bg-gray-100">
-            <div className="border pt-5 w-6/12 mx-auto">
+        <div className="bg-gray-100 h-[calc(100vh-82px)]">
+            <div className="border pt-5 w-6/12 mx-auto h-[calc(100vh - 83px)]">
                 <header className="pl-4 pb-4 border-b border-gray-200">
                     <h1 className="font-semibold text-lg">Payment Options</h1>
                     <div>
@@ -48,7 +48,7 @@ const PaymentMethods = () => {
                         </span>
                     </div>
                 </header>
-                <div className="bg-gray-200 h-[450px] overflow-y-scroll px-5 py-10">
+                <div className="bg-gray-200 h-[520px] overflow-y-scroll px-5 py-10">
                     <div className="my-5">
                         <h1 className="font-semibold mb-3">Pay by any UPI App</h1>
                         <div className="bg-white rounded-2xl py-5 px-5">
