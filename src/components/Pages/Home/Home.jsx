@@ -21,7 +21,7 @@ const Home = () => {
         <h1 className="font-bold mx-4 text-3xl">
           Restaurants with online food delivery in Hyderabad
         </h1>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap min-h-[333px] min-w-1">
           {filteredRestaurantsList.map((item) => (
             <Link key={item.info.id} to={"/restaurants/" + item.info.id}>
               {item.info.totalRatingsString.includes("K+") && parseInt(item.info.totalRatingsString) >= 10 ?
