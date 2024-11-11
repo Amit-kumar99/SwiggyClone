@@ -3,7 +3,7 @@ import useSearchApi from "../../../customHooks/useSearchApi";
 import { SUGGESTIONS_IMG_CDN_URL } from "../../../utils/constants";
 import { Link } from "react-router-dom";
 
-const SearchBar = ({ restaurantsList, setFilteredRestaurantsList }) => {
+const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -15,7 +15,7 @@ const SearchBar = ({ restaurantsList, setFilteredRestaurantsList }) => {
         <div className="w-full pr-2">
           <input
             value={searchText}
-            className="w-full p-3"
+            className="w-full p-3 outline-none"
             type="text"
             placeholder="Search"
             onChange={(e) => setSearchText(e.target.value)}
