@@ -9,6 +9,7 @@ import Error from "./components/Pages/Error/Error.jsx";
 import MyAccount from "./components/Pages/Profile/MyAccount.jsx";
 import Checkout from "./components/Pages/Checkout/Checkout.jsx";
 import PaymentMethods from "./components/Pages/PaymentMethods/PaymentMethods.jsx";
+import About from "./components/Pages/About.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/signin",
